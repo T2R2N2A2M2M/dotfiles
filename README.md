@@ -1,10 +1,10 @@
 # dotfiles
 
-Status bar: `waybar`\n
-Launcher: `rofi-lbonn-wayland-git`\n
-Terminal: `alacritty`\n
-File manager: `dolphin`\n
-Window Manager: `Hyprland`\n
+Status bar: `waybar`  
+Launcher: `rofi-lbonn-wayland-git`  
+Terminal: `alacritty`  
+File manager: `dolphin`  
+Window Manager: `Hyprland`  
 
 Software
 - issue installing eww-wayland need import gpg key first see AUR
