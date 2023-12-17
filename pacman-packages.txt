@@ -2,9 +2,9 @@ alacritty
 base
 base-devel
 breeze
+copyq
 dolphin
 dunst
-eww-wayland
 firefox
 go
 grub-btrfs
@@ -12,17 +12,14 @@ hyprland
 hyprpaper
 intel-ucode
 kitty
-librewolf-bin
 linux-headers
 meson
 neovim
-nordvpn-bin
 okular
 otf-ipaexfont
 pavucontrol-qt
 polkit-kde-agent
 qt5ct
-rofi-lbonn-wayland-git
 rsync
 rustup
 syncthing
@@ -33,5 +30,4 @@ ttf-joypixels
 vi
 waybar
 wget
-yay
 zsh-completions
