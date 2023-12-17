@@ -1,0 +1,5 @@
+eww-wayland
+librewolf-bin
+nordvpn-bin
+rofi-lbonn-wayland-git
+yay
