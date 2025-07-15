@@ -9,6 +9,23 @@ This installation tries to dual boot Arch Linux and Microsoft Windows 11 on two 
 - `snapper` as our snapshots
 - `zram` set up
 
+## Fix/Recover/Rebuild Windows EFI
+- Flash Windows 10 ISO on USB
+- Boot ISO USB -> select language
+- Repair your computer -> Troubleshoot -> Advanced options -> Command Prompt
+
+```cmd
+diskpart
+list disk
+select disk <Windows_drive>
+list partition
+select partition <EFI partition>
+assign letter=S:
+exit
+
+bcdboot C:\Windows /s S: /f UEFI
+```
+
 ## Initial Setup
 
 ```bash
@@ -124,7 +141,7 @@ mkinitcpio -P
 
 # Bootloader (grub)
 
-pacman -S --needed btrfs-progs grub efibootmgr grub-btrfs os-prober ntfs-3g amd-ucode mtools dosfstools rsync network-manager-applet git iptables ipset man-db man-pages texinfo bluez bluez-utils pipewire alsa-utils pipewire-pulse pipewire-jack sof-firmware ttf-firacode-nerd firefox alacritty acpid reflector
+pacman -S --needed btrfs-progs grub efibootmgr grub-btrfs os-prober ntfs-3g amd-ucode mtools dosfstools rsync network-manager-applet git iptables ipset man-db man-pages texinfo bluez bluez-utils pipewire alsa-utils pipewire-pulse pipewire-jack sof-firmware ttf-firacode-nerd firefox alacritty acpid reflector inotify-tools
 
 blkid 
 -> get UUID of <linux_main_part> 
