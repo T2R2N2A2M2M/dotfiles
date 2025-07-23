@@ -9,6 +9,18 @@ This installation tries to dual boot Arch Linux and Microsoft Windows 11 on two 
 - `snapper` as our snapshots
 - `zram` set up
 
+## Re-install GRUB from Arch ISO
+- map encrypted root to `main`
+- mount `/dev/mapper/main` to `/mnt`
+- mount the EFI partition to `/mnt/boot`
+- `arch-chroot /mnt`
+
+```bash
+mkinitcpio -P
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 ## Fix/Recover/Rebuild Windows EFI
 - Flash Windows 10 ISO on USB
 - Boot ISO USB -> select language
