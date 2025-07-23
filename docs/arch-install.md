@@ -9,36 +9,11 @@ This installation tries to dual boot Arch Linux and Microsoft Windows 11 on two 
 - `snapper` as our snapshots
 - `zram` set up
 
-## Re-install GRUB from Arch ISO
-- map encrypted root to `main`
-- mount `/dev/mapper/main` to `/mnt`
-- mount the EFI partition to `/mnt/boot`
-- `arch-chroot /mnt`
-
-```bash
-mkinitcpio -P
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-## Fix/Recover/Rebuild Windows EFI
-- Flash Windows 10 ISO on USB
-- Boot ISO USB -> select language
-- Repair your computer -> Troubleshoot -> Advanced options -> Command Prompt
-
-```cmd
-diskpart
-list disk
-select disk <Windows_drive>
-list partition
-select partition <EFI partition>
-assign letter=S:
-exit
-
-bcdboot C:\Windows /s S: /f UEFI
-```
-
 ## Initial Setup
+
+> [!CAUTION]
+> Make sure to wipe any old GRUB installation on Windows' EFI partition
+> Alternatively, wipe the EFI partition and re install Windows stuff (see Troubleshoot below)
 
 ```bash
 # Larger Text
@@ -236,3 +211,34 @@ nvim /etc/sudoers
 - SSH hardening (e.g., remove passphase access, disable root login)
 - Enable secure boot
 - Make grub password, restrict access to grub, immutable grub, disable recovery
+
+## Troubleshoot
+
+### Re-install GRUB from Arch ISO
+- map encrypted root to `main`
+- mount `/dev/mapper/main` to `/mnt`
+- mount the EFI partition to `/mnt/boot`
+- `arch-chroot /mnt`
+
+```bash
+mkinitcpio -P
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### Fix/Recover/Rebuild Windows EFI
+- Flash Windows 10 ISO on USB
+- Boot ISO USB -> select language
+- Repair your computer -> Troubleshoot -> Advanced options -> Command Prompt
+
+```cmd
+diskpart
+list disk
+select disk <Windows_drive>
+list partition
+select partition <EFI partition>
+assign letter=S:
+exit
+
+bcdboot C:\Windows /s S: /f UEFI
+```
