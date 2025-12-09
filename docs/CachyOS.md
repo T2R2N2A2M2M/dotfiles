@@ -16,3 +16,7 @@ with the following flags
 --enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo,VaapiVideoEncoder,VaapiVideoDecode 
 --ozone-platform=x11
 ```
+
+### ProtonVPN
+
+For some reason need to disable `Kwallet Secret Service` in order to use FIDO authentication.
